@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technull Inc. - Your Software Consulting Partner</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary-color: #64748b;
+        --accent-color: #06b6d4;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --background: #ffffff;
+        --surface: #f8fafc;
+        --border: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: linear-gradient(135deg, var(--surface) 0%, #ffffff 100%);
+        min-height: 100vh;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+      }
+
+      header h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      header .tagline {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        font-weight: 300;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      /* Container and Layout */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        padding-bottom: 8rem;
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 4rem 0;
+        margin-bottom: 4rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.125rem, 3vw, 1.5rem);
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      /* Content Cards */
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .content-card {
+        background: var(--background);
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .content-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .content-card h3 {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .content-card h3::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* Services List */
+      .services-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .services-list li {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .services-list li:last-child {
+        border-bottom: none;
+      }
+
+      .services-list li:hover {
+        padding-left: 1rem;
+        background: var(--surface);
+        margin: 0 -1rem;
+        border-radius: 8px;
+        border-bottom: 1px solid transparent;
+      }
+
+      .services-list strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      /* Contact Section */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--surface);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateX(8px);
+      }
+
+      .contact-icon {
+        width: 24px;
+        height: 24px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover .contact-icon {
+        background: white;
+        color: var(--primary-color);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(
+          135deg,
+          var(--text-primary) 0%,
+          #0f172a 100%
+        );
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer p {
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      footer a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      footer a:hover {
+        color: white;
+        text-shadow: 0 0 8px var(--accent-color);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+          padding-bottom: 8rem;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .content-card {
+          padding: 2rem;
+        }
+
+        .hero-section {
+          padding: 2rem 0;
+          margin-bottom: 2rem;
+        }
+
+        header {
+          padding: 1.5rem 0;
+        }
+
+        footer {
+          padding: 1.5rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content-card {
+          padding: 1.5rem;
+        }
+
+        .services-list li:hover {
+          margin: 0;
+          padding-left: 0.5rem;
+        }
+      }
+
+      /* Scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Loading animation for content cards */
+      .content-card {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .content-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      .content-card:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Technull Inc.</h1>
+      <p class="tagline">Your Software Consulting Partner</p>
+    </header>
+
+    <div class="container">
+      <section class="hero-section">
+        <h2 class="hero-title">Innovative Software Solutions</h2>
+        <p class="hero-subtitle">
+          We deliver cutting-edge software consulting services that transform
+          your business ideas into powerful digital solutions.
+        </p>
+      </section>
+
+      <div class="content-grid">
+        <div class="content-card">
+          <h3>Our Services</h3>
+          <ul class="services-list">
+            <li>
+              <strong>Backend Development</strong>
+              We build scalable and secure server-side applications to power
+              your business with robust architecture and optimal performance.
+            </li>
+            <li>
+              <strong>Mobile Development</strong>
+              Creating intuitive and user-friendly mobile applications for both
+              iOS and Android platforms with native performance.
+            </li>
+            <li>
+              <strong>Cloud Integration</strong>
+              Leveraging cloud technologies to ensure your applications are
+              reliable, scalable, and available globally with 99.9% uptime.
+            </li>
+            <li>
+              <strong>Consulting</strong>
+              Offering expert advice and strategies for optimizing your software
+              development processes and digital transformation.
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>About Us</h3>
+          <p>
+            Technull Inc. is a leading software consulting company with a team
+            of experienced professionals dedicated to delivering high-quality
+            software solutions. Our focus is on creating efficient and
+            innovative software that meets the unique needs of our clients.
+          </p>
+          <br />
+          <p>
+            With years of experience in the industry, we pride ourselves on
+            staying at the forefront of technology trends and delivering
+            solutions that drive real business value.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">@</div>
+              <span>info@technull.dev</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🌐</div>
+              <span>technull.dev</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Technull Inc. All rights reserved. |
+        <a href="http://technull.dev">technull.dev</a>
+      </p>
+    </footer>
+
+    <script>
+      // Add smooth scroll behavior and intersection observer for animations
+      document.addEventListener("DOMContentLoaded", function () {
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all content cards
+        document.querySelectorAll(".content-card").forEach((card) => {
+          observer.observe(card);
+        });
+
+        // Add hover effect for service items
+        document.querySelectorAll(".services-list li").forEach((item) => {
+          item.addEventListener("mouseenter", function () {
+            this.style.transform = "translateX(8px)";
+          });
+
+          item.addEventListener("mouseleave", function () {
+            this.style.transform = "translateX(0)";
+          });
+        });
+
+        // Add click effect for contact items
+        document.querySelectorAll(".contact-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const text = this.querySelector("span").textContent;
+            if (text.includes("@")) {
+              window.location.href = `mailto:${text}`;
+            } else if (text.includes(".")) {
+              window.open(`http://${text}`, "_blank");
+            }
+          });
+        });
+
+        // Add parallax effect to header
+        window.addEventListener("scroll", function () {
+          const scrolled = window.pageYOffset;
+          const header = document.querySelector("header");
+          if (header) {
+            header.style.transform = `translateY(${scrolled * 0.5}px)`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
